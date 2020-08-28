@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Pregunta = findViewById(R.id.Pregunta);
         Respuesta = findViewById(R.id.Respuesta);
         Aceptar = findViewById(R.id.Aceptar);
-        preguntas = new ArrayList<Pregunta>;
+        preguntas = new ArrayList<Pregunta>();
 
         Aceptar.setOnClickListener(
                 (v) -> {
