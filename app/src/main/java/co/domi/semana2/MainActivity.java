@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                             punticos += 15;
                             PreguntasSiguiente();
                             Respuesta.setText("");
-                        } else {
+                        } else if(PrenderContador == true) {
                             punticos -= 10;
                         }
-
+                    Puntos.setText("puntajes:"+punticos);
                 }
         );
 
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
                     punticos = 0;
                     tiempo = 20;
                     Temporizador();
+                    Puntos.setText("puntajes:"+punticos);
+                    Respuesta.setText("");
                     Intentarlo.setVisibility(View.GONE);
                 }
         );
