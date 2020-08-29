@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         PreguntasSiguiente();
         Temporizador();
 
-        Respuesta.setOnClickListener(
+        Aceptar.setOnClickListener(
                 (v) -> {
                     String MiRespuesta = Respuesta.getText().toString();
                         if (MiRespuesta.equals(Integer.toString(preguntas.getRespuesta())) && PrenderContador == true) {
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         Intentarlo.setOnClickListener(
                 (v) -> {
                     PrenderContador = true;
+                    PreguntasSiguiente();
                     punticos = 0;
                     tiempo = 20;
                     Temporizador();
