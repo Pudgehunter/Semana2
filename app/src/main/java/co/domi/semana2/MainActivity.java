@@ -51,33 +51,35 @@ public class MainActivity extends AppCompatActivity {
         Respuesta.setOnClickListener(
                 (v) -> {
                     String MiRespuesta = Respuesta.getText().toString();
-                        if (MiRespuesta.equals(Integer.toString(preguntas.getRespuesta()))) {
+                        if (MiRespuesta.equals(Integer.toString(preguntas.getRespuesta())) && PrenderContador == true) {
                             punticos += 15;
                             PreguntasSiguiente();
                             Respuesta.setText("");
                         } else {
                             punticos -= 10;
                         }
-                    Puntos.setText("puntajes:"+punticos);
+
                 }
         );
+
+
 
         Intentarlo.setOnClickListener(
                 (v) -> {
                     PrenderContador = true;
-
                     punticos = 0;
-                    Puntos.setText("puntajes:"+punticos);
-                    Tiempo.setText(" " + tiempo);
+                    tiempo = 20;
+                    Temporizador();
                     Intentarlo.setVisibility(View.GONE);
                 }
         );
+        Puntos.setText("puntajes:"+punticos);
     }
 
     public void PreguntasSiguiente(){
-        int numeroRandomUno = (int) Math.floor((Math.random() * 10 + 1));
-        int numeroRandomDos = (int) Math.floor((Math.random() * 10 + 1));
-        int operacion = (int) Math.floor(Math.random() * 4 + 1);
+        int numeroRandomUno = random.nextInt(11);
+        int numeroRandomDos = random.nextInt(11);
+        int operacion = random.nextInt(4);
         preguntas = new Pregunta(numeroRandomUno,numeroRandomDos,operacion);
         preguntas.generadorPregunta();
         Pregunta.setText(preguntas.devolverPregunta()+" ");
@@ -92,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(() ->Tiempo.setText(" " + tiempo));
                         if(tiempo <= 0){
                             PrenderContador = false;
-                            tiempo = 20;
                             runOnUiThread(() ->Intentarlo.setVisibility(View.VISIBLE));
                         }
                         try {
